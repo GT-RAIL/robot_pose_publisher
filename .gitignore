@@ -1,6 +1,7 @@
 .cproject
 .project
 .pydevproject
+.settings
 .svn
 bin
 build
