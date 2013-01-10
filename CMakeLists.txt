@@ -25,9 +25,18 @@ include_directories(include
 )
 
 ## Declare a cpp executable
-add_executable(robot_pose_publisher src/robot_pose_publisher.cpp)
+add_executable(${PROJECT_NAME} src/robot_pose_publisher.cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(robot_pose_publisher
+target_link_libraries(${PROJECT_NAME}
   ${catkin_LIBRARIES}
+)
+
+#############
+## Install ##
+#############
+
+## Mark executables and/or libraries for installation
+install(TARGETS ${PROJECT_NAME}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
