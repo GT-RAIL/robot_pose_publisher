@@ -76,24 +76,24 @@ int main(int argc, char ** argv)
     try
     {
       listener.lookupTransform("/map", "/base_link", ros::Time(0), transform);
+
+      // construct a pose message
+      geometry_msgs::Pose pose;
+      pose.orientation.x = transform.getRotation().getX();
+      pose.orientation.y = transform.getRotation().getY();
+      pose.orientation.z = transform.getRotation().getZ();
+      pose.orientation.w = transform.getRotation().getW();
+
+      pose.position.x = transform.getOrigin().getX();
+      pose.position.y = transform.getOrigin().getY();
+      pose.position.z = transform.getOrigin().getZ();
+
+      pose_pub.publish(pose);
     }
     catch (tf::TransformException &ex)
     {
-      ROS_ERROR("%s", ex.what());
+      // just continue on
     }
-
-    // construct a pose message
-    geometry_msgs::Pose pose;
-    pose.orientation.x = transform.getRotation().getX();
-    pose.orientation.y = transform.getRotation().getY();
-    pose.orientation.z = transform.getRotation().getZ();
-    pose.orientation.w = transform.getRotation().getW();
-
-    pose.position.x = transform.getOrigin().getX();
-    pose.position.y = transform.getOrigin().getY();
-    pose.position.z = transform.getOrigin().getZ();
-
-    pose_pub.publish(pose);
 
     rate.sleep();
   }
