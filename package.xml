@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>robot_pose_publisher</name>
-  <version>0.2.0</version>
+  <version>0.2.1</version>
   <description>A simple node to publish the robot's position relative to the map using TFs.</description>
 
   <maintainer email="rctoris@wpi.edu">Russell Toris</maintainer>
