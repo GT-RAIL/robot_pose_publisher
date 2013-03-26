@@ -47,6 +47,7 @@
  */
 
 #include <geometry_msgs/PoseStamped.h>
+#include <geometry_msgs/Pose.h>
 #include <ros/ros.h>
 #include <tf/transform_listener.h>
 
@@ -66,11 +67,18 @@ int main(int argc, char ** argv)
   // configuring parameters
   std::string map_frame, base_frame;
   double publish_frequency;
+  bool is_stamped;
+  ros::Publisher p_pub;
+
   nh.param<std::string>("map_frame",map_frame,"/map");
   nh.param<std::string>("base_frame",base_frame,"/base_link");
   nh.param<double>("publish_frequency",publish_frequency,10);
+  nh.param<bool>("is_stamped", is_stamped, false);
 
-  ros::Publisher posestamped_pub = nh.advertise<geometry_msgs::PoseStamped>("robot_pose", 1);
+  if(is_stamped)
+    p_pub = nh.advertise<geometry_msgs::PoseStamped>("robot_pose", 1);
+  else 
+    p_pub = nh.advertise<geometry_msgs::Pose>("robot_pose", 1);
 
   // create the listener
   tf::TransformListener listener;
@@ -98,7 +106,10 @@ int main(int argc, char ** argv)
       pose_stamped.pose.position.y = transform.getOrigin().getY();
       pose_stamped.pose.position.z = transform.getOrigin().getZ();
 
-      posestamped_pub.publish(pose_stamped);
+      if(is_stamped)
+        p_pub.publish(pose_stamped);
+      else
+        p_pub.publish(pose_stamped.pose);
     }
     catch (tf::TransformException &ex)
     {
