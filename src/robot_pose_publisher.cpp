@@ -63,6 +63,7 @@ int main(int argc, char ** argv)
   // initialize ROS and the node
   ros::init(argc, argv, "robot_pose_publisher");
   ros::NodeHandle nh;
+  ros::NodeHandle nh_priv("~");
 
   // configuring parameters
   std::string map_frame, base_frame;
@@ -70,10 +71,10 @@ int main(int argc, char ** argv)
   bool is_stamped;
   ros::Publisher p_pub;
 
-  nh.param<std::string>("map_frame",map_frame,"/map");
-  nh.param<std::string>("base_frame",base_frame,"/base_link");
-  nh.param<double>("publish_frequency",publish_frequency,10);
-  nh.param<bool>("is_stamped", is_stamped, false);
+  nh_priv.param<std::string>("map_frame",map_frame,"/map");
+  nh_priv.param<std::string>("base_frame",base_frame,"/base_link");
+  nh_priv.param<double>("publish_frequency",publish_frequency,10);
+  nh_priv.param<bool>("is_stamped", is_stamped, false);
 
   if(is_stamped)
     p_pub = nh.advertise<geometry_msgs::PoseStamped>("robot_pose", 1);
