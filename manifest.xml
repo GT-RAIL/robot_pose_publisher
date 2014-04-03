@@ -1,5 +1,5 @@
 <package>
- <description brief="Simple node to publish the robot's position relative to the map">A simple node to publish the robot's position relative to the map using TFs.</description>
+ <description brief="A Simple Node to Publish the Robot's Position Relative to the Map using TFs">A Simple Node to Publish the Robot's Position Relative to the Map using TFs</description>
  <author>Russell Toris</author>
  <license>BSD</license>  
  <review status="unreviewed" notes="" />
