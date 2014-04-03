@@ -16,4 +16,4 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
 rosbuild_add_executable(robot_pose_publisher src/robot_pose_publisher.cpp)
 
-rosbuild_make_distribution(0.1.01)
+rosbuild_make_distribution(0.3.0)
