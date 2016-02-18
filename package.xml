@@ -10,8 +10,8 @@
   <license>BSD</license>
 
   <url type="website">http://ros.org/wiki/robot_pose_publisher</url>
-  <url type="bugtracker">https://github.com/WPI-RAIL/robot_pose_publisher/issues</url>
-  <url type="repository">https://github.com/WPI-RAIL/robot_pose_publisher</url>
+  <url type="bugtracker">https://github.com/GT-RAIL/robot_pose_publisher/issues</url>
+  <url type="repository">https://github.com/GT-RAIL/robot_pose_publisher</url>
 
   <buildtool_depend>catkin</buildtool_depend>
 
