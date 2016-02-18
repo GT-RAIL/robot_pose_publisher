@@ -19,7 +19,7 @@ install:
   - sudo rosdep init
   - rosdep update 
   - mkdir -p /tmp/ws/src
-  - ln -s `pwd` /tmp/ws/src/youbot_teleop
+  - ln -s `pwd` /tmp/ws/src/package
   - cd /tmp/ws
   - rosdep install --from-paths src --ignore-src --rosdistro groovy -y
   - rosdep install --from-paths src --ignore-src --rosdistro hydro -y

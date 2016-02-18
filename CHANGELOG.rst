@@ -2,6 +2,15 @@
 Changelog for package robot_pose_publisher
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.2.4 (2016-02-18)
+------------------
+* Update README.md
+* Update package.xml
+* fixed dox file
+* fixed readme
+* travis edit
+* Contributors: David Kent, Russell Toris
+
 0.2.3 (2014-04-03)
 ------------------
 * cleanup for release
