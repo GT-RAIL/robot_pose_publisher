@@ -1,4 +1,4 @@
-robot_pose_publisher [![Build Status](https://api.travis-ci.org/WPI-RAIL/robot_pose_publisher.png)](https://travis-ci.org/WPI-RAIL/robot_pose_publisher)
+robot_pose_publisher [![Build Status](https://api.travis-ci.org/GT-RAIL/robot_pose_publisher.png)](https://travis-ci.org/GT-RAIL/robot_pose_publisher)
 ====================
 
 #### A Simple Node to Publish the Robot's Position Relative to the Map using TFs
