@@ -62,7 +62,8 @@ int main(int argc, char ** argv)
         listener.lookupTransform(map_frame, base_frame, t, transform);
       else
       {
-        ROS_WARN("common time lookup failed, fallback to latest transform");
+        ROS_LOG_THROTTLE(10, ros::console::levels::Warn, ROSCONSOLE_DEFAULT_NAME,
+                "common time lookup failed, fallback to latest transform");
         listener.lookupTransform(map_frame, base_frame, ros::Time(0), transform);
         t = ros::Time::now();
       }
