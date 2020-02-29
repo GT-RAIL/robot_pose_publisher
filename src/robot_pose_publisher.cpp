@@ -54,12 +54,24 @@ int main(int argc, char ** argv)
     tf::StampedTransform transform;
     try
     {
-      listener.lookupTransform(map_frame, base_frame, ros::Time(0), transform);
+      ros::Time t;
+      std::string err;
+
+      int e = listener.getLatestCommonTime(map_frame, base_frame, t, &err);
+      if (e == tf::NO_ERROR)
+        listener.lookupTransform(map_frame, base_frame, t, transform);
+      else
+      {
+        ROS_LOG_THROTTLE(10, ros::console::levels::Warn, ROSCONSOLE_DEFAULT_NAME,
+                "common time lookup failed, fallback to latest transform");
+        listener.lookupTransform(map_frame, base_frame, ros::Time(0), transform);
+        t = ros::Time::now();
+      }
 
       // construct a pose message
       geometry_msgs::PoseStamped pose_stamped;
       pose_stamped.header.frame_id = map_frame;
-      pose_stamped.header.stamp = ros::Time::now();
+      pose_stamped.header.stamp = t;
 
       pose_stamped.pose.orientation.x = transform.getRotation().getX();
       pose_stamped.pose.orientation.y = transform.getRotation().getY();
